@@ -1,3 +1,4 @@
+import argparse
 import platform
 from typing import List, Tuple
 
@@ -142,9 +143,17 @@ def convert_image_to_ascii(image_path: str, output_path: str):
 
 
 if __name__ == "__main__":
-    # Define input and output file paths
-    input_image_path = "image.jpg"  # Path to the input image
-    output_ascii_art_path = "ascii_art.png"  # Path to save the output image
+    # Set up the argument parser
+    parser = argparse.ArgumentParser(
+        description="Convert an image to ASCII art and save it as an image."
+    )
+    parser.add_argument("-i", "--input", required=True, help="Path to the input image")
+    parser.add_argument(
+        "-o", "--output", required=True, help="Path to save the output ASCII art image"
+    )
 
-    # Call the main function with paths
-    convert_image_to_ascii(input_image_path, output_ascii_art_path)
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Call the function with the provided arguments
+    convert_image_to_ascii(args.input, args.output)

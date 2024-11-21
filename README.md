@@ -2,6 +2,7 @@
 This Python program converts images into ASCII art and saves the resulting art as an image. The project leverages OpenCV for image processing and Pillow for rendering the ASCII art into an output image.
 
 ## Features
+- Supports multiple image formats: .jpg, .jpeg, .png, .bmp, .tiff.
 - Resize images for ASCII representation.
 - Convert grayscale intensity to ASCII characters.
 - Save ASCII art as an image file.
@@ -25,30 +26,25 @@ cd ascii-art-generator
 ```
 
 ### 2. Install dependencies:
-Ensure you have uv installed (or your preferred dependency management tool):
+Make sure you have uv installed. Then install the dependencies specified in pyproject.toml and uv.lock:
 ```
 pip install pipx
 pipx install uv
-```
-
-Then, install the dependencies specified in pyproject.toml and uv.lock:
-```
 uv sync
 ```
 
 ### 3. Run the program:
 #### Option 1: Direct execution
-Run the main script to process an image and save the ASCII art:
-
+Run the program from the command line with the -i and -o options to specify the input and output file paths:
 ```
-python run_ascii.py
+python create_ascii.py -i "path/to/input.jpg" -o "path/to/output.png"
 ```
 
-Update the input_image_path and output_ascii_art_path variables in run_ascii.py to specify the paths for the input and output files.
+- -i or --input: Path to the input image file. Supported formats: .jpg, .jpeg, .png, .bmp, .tiff.
+- -o or --output: Path to save the generated ASCII art image. The output can be any valid image format.
 
 #### Option 2: Import and use as a library
 You can also use the program in other scripts by importing the main function:
-
 ```
 from create_ascii import convert_image_to_ascii
 
